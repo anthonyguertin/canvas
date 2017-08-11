@@ -6,19 +6,19 @@ function Point(x, y, name)
 	this.edge = null;
 }
 
-Point.prototype.distance = function(x, y){
+Point.prototype.distance = function(x, y) {
    return(Math.sqrt( this.distance2(x,y) ));
 };
 
-Point.prototype.distance2 = function(x, y){
+Point.prototype.distance2 = function(x, y) {
    return(sqr(x-this.x) + sqr(y-this.y));
 };
 
-Point.prototype.setEdge = function(e){
+Point.prototype.setEdge = function(e) {
 	this.edge = e;
 };
 
-Point.prototype.toHTML = function(){
+Point.prototype.toHTML = function() {
 	return `<b>p${this.name}</b><br/> (${this.x}, ${this.y})`;
 };
 
@@ -26,10 +26,10 @@ Point.prototype.toJSON = function() {
     const string = `{"name":"p${this.name}", "x":${this.x}, "y":${this.y}}`;
     return JSON.parse(string);
 };
-Point.prototype.getName = function(){
+Point.prototype.getName = function() {
 	return `p${this.name}`;
 };
 
-function sqr(x){
+function sqr(x) {
 	return x*x;
 }

@@ -30,7 +30,7 @@ function mouseDown(e) {
         dragPoint.x = x;
         dragPoint.y = y;
 
-        document.addEventListener('mouseup', mouseUp);
+        document.addEventListener(__event.mouseUp, mouseUp);
 
         redraw();
     }
@@ -72,7 +72,7 @@ function mouseDown(e) {
 
 function mouseUp() {
     dragPoint = null;
-    document.removeEventListener('mouseup', mouseUp);
+    document.removeEventListener(__event.mouseUp, mouseUp);
 };
 
 function mouseMove(e) {
@@ -156,7 +156,7 @@ function LineCollision(mouseX, mouseY, debug = false) {
 
 function EdgeCollectionCollision(mouseX, mouseY, edges, debug = false) {
     const p = new Point(mouseX, mouseY, 'mouse');
-    if (debug) { drawPoint(p, 'blue'); }
+    if (debug) { drawPoint(p, __color.blue); }
 
     // TODO: Where is the definition for edges? It isn't in local scope and can't find it globally.
     for (let i = 0; i < edges.length; i++) {
@@ -168,10 +168,10 @@ function EdgeCollectionCollision(mouseX, mouseY, edges, debug = false) {
         const l = lerp(v, w, t);
 
         if (debug) {
-            drawLinePoints(p, v, 2, 'grey');
-            drawLinePoints(p, w, 2, 'grey');
-            drawPoint(l, 'green');
-            drawLinePoints(l, p, 2, 'purple');
+            drawLinePoints(p, v, 2, __color.gray);
+            drawLinePoints(p, w, 2, __color.gray);
+            drawPoint(l, __color.green);
+            drawLinePoints(l, p, 2, __color.purple);
         }
         if (p.distance(l.x, l.y) < 15 && t < 0.5) //distance to lerp along VW using t
             return edges[i];
@@ -179,7 +179,7 @@ function EdgeCollectionCollision(mouseX, mouseY, edges, debug = false) {
     return null;
 }
 
-function drawPoly(polygon, width=3, color = "black") {
+function drawPoly(polygon, width=3, color = __color.black) {
     const points = polygon.getPoints();
     var i;
 
@@ -195,7 +195,7 @@ function drawPoly(polygon, width=3, color = "black") {
     }
 }
 
-function drawPoint(p, width = 5, color = "red") {
+function drawPoint(p, width = 5, color = __color.red) {
     if (window.c == null) { return; }
     window.c.fillStyle = color;
     window.c.beginPath();

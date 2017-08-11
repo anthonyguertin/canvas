@@ -14,6 +14,7 @@ Poly.prototype.makeFromPointArray = function(points) {
     var lastEdge;
     lastEdge = null;
     var i;
+    
     for (i = 0; i < points.length; i++) {
         if (i === 0) {
             this.firstPoint(points[i].x, points[i].y);
@@ -163,8 +164,9 @@ Poly.prototype.close = function(first, last) { //only to the origin
     }
 };
 
-Poly.prototype.getEdges = function() {
-    return this.edges;
+Poly.prototype.Edges = {
+     get: this.e = this.edges,
+     set [this.e](v) = v
 };
 Poly.prototype.getPoints = function() {
     return this.points;
