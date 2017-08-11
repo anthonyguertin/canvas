@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -16,17 +16,22 @@
     <script type="text/javascript" src="Triangulation.js"></script>
     <script type="text/javascript" src="TreeNode.js"></script>
     <script type="text/javascript" src="Tree.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.5.0/jquery.contextMenu.min.js"></script>
+
     
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript">
         function onLoad(){
-            canv = document.getElementById("canvas");
+            const canv = document.getElementById("canvas");
             //canv.onclick = mouseClick;
             canv.onmousemove = mouseMove;
             canv.addEventListener('mousedown', mouseDown);
-            c = canv.getContext('2d');
-            w = canv.width = window.innerWidth;
-            h = canv.height = window.innerHeight;
+            canv.addEventListener('mouseup', mouseUp);
+
+            window.c = canv.getContext('2d');
+            window.w = canv.width = window.innerWidth;
+            window.h = canv.height = window.innerHeight;
 
             c.fillStyle = "#ffffff";
             c.fillRect (0, 0, w, h);
@@ -35,7 +40,7 @@
 </head>
 <body onload="onLoad()">
     <canvas id="canvas" resize hidpi="off" style="background:white"></canvas>
-    <div style="position:fixed; top:5px; left:5px; background-color:rgba(0,0,0,0.33); color:#fff; z-index:2; padding:6px; border-radius:6px;">
+    <div style="position:fixed; top:5px; left:5px; background-color:#ffffff; background-color:rgba(0,0,0,0.33); color:#ffffff; z-index:2; padding:6px; border-radius:6px;">
         <div>
             x: <span id="xDisplay"></span>
             <br/>
@@ -48,7 +53,7 @@
         </div>-->
     </div>
 
-    <div style="position:fixed; background-color:rgba(0,0,0,0.66); color:#fff; z-index:2; padding:6px; border-radius:6px; text-align:center; visibility:hidden;" id="mouseHoverDisplay">
+    <div style="position:fixed; background-color:#ffffff; background-color:rgba(0,0,0,0.66); color:#ffffff; z-index:2; padding:6px; border-radius:6px; text-align:center; visibility:hidden;" id="mouseHoverDisplay">
     </div>
 
 </body>

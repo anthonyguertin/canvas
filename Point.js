@@ -19,15 +19,15 @@ Point.prototype.setEdge = function(e){
 };
 
 Point.prototype.toHTML = function(){
-	return "<b>p"+this.name + "</b><br/> (" + this.x + ", " + this.y + ")";
+	return `<b>p${this.name}</b><br/> (${this.x}, ${this.y})`;
 };
 
-Point.prototype.toJSON = function(){
-	var string = "{\"name\":\"p"+this.name+"\", \"x\":"+this.x+", \"y\":"+this.y+"}";
-	return JSON.parse(string);
+Point.prototype.toJSON = function() {
+    const string = `{"name":"p${this.name}", "x":${this.x}, "y":${this.y}}`;
+    return JSON.parse(string);
 };
 Point.prototype.getName = function(){
-	return "p"+this.name;
+	return `p${this.name}`;
 };
 
 function sqr(x){
